@@ -9,6 +9,10 @@ public class Menu : MonoBehaviour {
 			PlayerPrefs.SetInt ("lastlevel", Application.loadedLevel);
 			// and you can call this info by using:
 		}
+		if (Application.loadedLevelName != "VictoryMenu") {
+			PlayerPrefs.SetInt ("lastlevelAccess", Application.loadedLevel + 1);
+			// and you can call this info by using:
+		}
 	}
 
 	public void QuitGame(){
@@ -33,6 +37,12 @@ public class Menu : MonoBehaviour {
 		int lastLevel = PlayerPrefs.GetInt ("lastlevel");
 		Application.LoadLevel (lastLevel + 1);
 		Debug.Log (lastLevel + 1);
+	}
+	public void LevelAccess (int levelAccess){
+		int lastLevelAccess = PlayerPrefs.GetInt ("lastlevelAccess");
+		if (lastLevelAccess > levelAccess) {
+			Application.LoadLevel (levelAccess);
+		}
 	}
 }
 
