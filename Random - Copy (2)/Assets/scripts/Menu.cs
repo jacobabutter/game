@@ -13,7 +13,7 @@ public class Menu : MonoBehaviour {
 			PlayerPrefs.SetInt ("lastlevelAccess", 1);
 		}
 		if (Application.loadedLevelName == "VictoryMenu") {
-			PlayerPrefs.SetInt ("lastlevelAccess", Application.loadedLevel + 1);
+			PlayerPrefs.SetInt ("lastlevelAccess", Application.loadedLevel + 2);
 			// and you can call this info by using:
 		}
 	}
@@ -46,8 +46,8 @@ public class Menu : MonoBehaviour {
 	}
 	public void LoadNextLevel (string nextlevelload){
 		int lastLevel = PlayerPrefs.GetInt ("lastlevel");
-		Application.LoadLevel (lastLevel + 1);
-		Debug.Log (lastLevel + 1);
+		Application.LoadLevel (lastLevel + 2);
+		Debug.Log ("next level scene number " + (lastLevel + 2));
 	}
 	public void LevelAccess (int levelAccess){
 		int lastLevelAccess = PlayerPrefs.GetInt ("lastlevelAccess");
