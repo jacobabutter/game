@@ -43,6 +43,9 @@ public class MoveBall : MonoBehaviour {
 	float moveZ04;
 	public float maxSpeed;
 	public float maxRegSpeed;
+	int gemCountMoveBall;
+	
+	public GameController gameController01;
 	
 	void Start(){
 		// get the distance to ground
@@ -129,7 +132,7 @@ public class MoveBall : MonoBehaviour {
 			moveX03 = 0;
 			moveZ03 = 0;
 		}
-		if (Input.GetKey(KeyCode.Z)) {
+		if (Input.GetKey(KeyCode.Z) && GameController.gemCount == 6) {
 			boost = true;
 			timer08 = mainTimer - 1f;
 		}
