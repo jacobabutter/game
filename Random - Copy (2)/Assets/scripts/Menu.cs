@@ -14,7 +14,6 @@ public class Menu : MonoBehaviour {
 		}
 		if (Application.loadedLevelName == "VictoryMenu") {
 			PlayerPrefs.SetInt ("lastlevelAccess", Application.loadedLevel + 2);
-			// and you can call this info by using:
 		}
 	}
 
