@@ -17,23 +17,23 @@ public class GameController : MonoBehaviour {
 			gemCount++;
 		}
 		if (pick_up_2 == true) {
-			Destroy (GameObject.Find ("gem 1"));
+			Destroy (GameObject.Find ("gem 2"));
 			gemCount++;
 		}
 		if (pick_up_3 == true) {
-			Destroy (GameObject.Find ("gem 1"));
+			Destroy (GameObject.Find ("gem 3"));
 			gemCount++;
 		}
 		if (pick_up_4 == true) {
-			Destroy (GameObject.Find ("gem 1"));
+			Destroy (GameObject.Find ("gem 4"));
 			gemCount++;
 		}
 		if (pick_up_5 == true) {
-			Destroy (GameObject.Find ("gem 1"));
+			Destroy (GameObject.Find ("gem 5"));
 			gemCount++;
 		}
 		if (pick_up_6 == true) {
-			Destroy (GameObject.Find ("gem 1"));
+			Destroy (GameObject.Find ("gem 6"));
 			gemCount++;
 		}
 	}

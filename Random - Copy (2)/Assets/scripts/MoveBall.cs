@@ -11,6 +11,7 @@ public class MoveBall : MonoBehaviour {
 	float speed;
 	static float health;
 	float moveX;
+	float moveY02;
 	Rigidbody rb;
 	public int groundLayer;
 	int ballAccelerationY;
@@ -49,7 +50,7 @@ public class MoveBall : MonoBehaviour {
 	
 	void Start(){
 		// get the distance to ground
-		transform.position = new Vector3 (-5, 5, -100);
+		//transform.position = new Vector3 (-5, 5, -100);
 		timer06 = mainTimer;
 		health = 5;
 		ballAccelerationY = 40;
@@ -57,6 +58,7 @@ public class MoveBall : MonoBehaviour {
 		maxSpeed = 25;
 		maxRegSpeed = 10;
 		speed = 10;
+		moveY02 = 0;
 		targetGO = GameObject.FindGameObjectWithTag ("Player");
 		colBallIsGrounded = targetGO.GetComponent<SphereCollider> ();
 		distToGround = colBallIsGrounded.bounds.extents.y;
@@ -145,7 +147,7 @@ public class MoveBall : MonoBehaviour {
 			Angle = 360 - Angle;
 		}
 		AngleRad = (Mathf.PI * Angle) / 180f;
-		movement = new Vector3 (moveX01*speed + moveX02*speed + moveX03*speed + moveX04*speed, moveY * speed, moveZ01*speed + moveZ02*speed + moveZ03*speed + moveZ04*speed);
+		movement = new Vector3 (moveX01*speed + moveX02*speed + moveX03*speed + moveX04*speed, moveY*speed + moveY02*speed, moveZ01*speed + moveZ02*speed + moveZ03*speed + moveZ04*speed);
 		magnitude = movement.magnitude;
 
 		if ( !boost && Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2) > Mathf.Pow (maxRegSpeed, 2)) {
@@ -228,6 +230,16 @@ public class MoveBall : MonoBehaviour {
 			Application.LoadLevel ("VictoryMenu");
 			Debug.Log ("you won");
 		} 
+		if (collision.collider.tag == "LowerGravitySphere") {
+			rb.useGravity = false;
+			moveY02 = -.5f;
+			Destroy(collision.gameObject);
+		}
+		if (collision.collider.tag == "NormalGravity") {
+			rb.useGravity = true;
+			moveY02 = 0;
+			Destroy(collision.gameObject);
+		}
 	}
 }
 

@@ -38,7 +38,7 @@ public class Menu : MonoBehaviour {
 	public void LoadMainMenu (string mainmenu){
 		Application.LoadLevel (mainmenu);
 	}
-	public void LoadLastLevel (string lastlevelload){
+	public void LoadLastLevel (string lastlevel){
 		int lastLevel = PlayerPrefs.GetInt ("lastlevel");
 		Application.LoadLevel (lastLevel);
 		Debug.Log (lastLevel);
