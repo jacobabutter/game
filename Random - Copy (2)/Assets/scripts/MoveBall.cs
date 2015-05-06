@@ -142,16 +142,16 @@ public class MoveBall : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		Angle = Vector3.Angle(Vector3.forward, new Vector3 (rb.velocity.x, 0, rb.velocity.z)); 
+		Angle = Vector3.Angle (Vector3.forward, new Vector3 (rb.velocity.x, 0, rb.velocity.z)); 
 		if (rb.velocity.x < 0) {
 			Angle = 360 - Angle;
 		}
 		AngleRad = (Mathf.PI * Angle) / 180f;
-		movement = new Vector3 (moveX01*speed + moveX02*speed + moveX03*speed + moveX04*speed, moveY*speed + moveY02*speed, moveZ01*speed + moveZ02*speed + moveZ03*speed + moveZ04*speed);
+		movement = new Vector3 (moveX01 * speed + moveX02 * speed + moveX03 * speed + moveX04 * speed, moveY * speed + moveY02 * speed, moveZ01 * speed + moveZ02 * speed + moveZ03 * speed + moveZ04 * speed);
 		magnitude = movement.magnitude;
 
-		if ( !boost && Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2) > Mathf.Pow (maxRegSpeed, 2)) {
-			movement.z =  0;
+		if (!boost && Mathf.Pow (rb.velocity.x, 2) + Mathf.Pow (rb.velocity.z, 2) > Mathf.Pow (maxRegSpeed, 2)) {
+			movement.z = 0;
 			movement.x = 0;
 		}
 		if (boost && Mathf.Pow (rb.velocity.x, 2) + Mathf.Pow (rb.velocity.z, 2) > Mathf.Pow (maxSpeed, 2)) {
@@ -164,7 +164,7 @@ public class MoveBall : MonoBehaviour {
 		if (!boost) {
 			rb.AddForce (movement);
 		}
-		if (boost){
+		if (boost) {
 			Debug.Log ("sped up");
 			rb.AddForce (movement * 3);
 		}
@@ -204,11 +204,14 @@ public class MoveBall : MonoBehaviour {
 		if (IsGrounded () || IsGroundedSlant ()) {
 			timer06 = mainTimer;
 		}
-		if (!IsGrounded() && !IsGroundedSlant() && mainTimer > timer06 + 6){
+		if (!IsGrounded () && !IsGroundedSlant () && mainTimer > timer06 + 15) {
 			health = 0;
 		}
 		if (health < .01f) {
 			Application.LoadLevel ("DeadMenu");
+		}
+		if (rb.position.y < -10){
+			health = 0;
 		}
 	}
 	void OnCollisionEnter(Collision collision) {
