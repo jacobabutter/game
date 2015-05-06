@@ -28,7 +28,7 @@ public class Menu : MonoBehaviour {
 		int levelAccess = PlayerPrefs.GetInt ("lastlevelAccess");
 		int levelLoad = level + 3;
 		Debug.Log (levelAccess);
-		if ( levelLoad >= levelAccess) {
+		if ( levelLoad <= levelAccess) {
 			Application.LoadLevel (levelLoad);
 		}
 	}
